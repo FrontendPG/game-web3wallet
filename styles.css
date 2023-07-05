@@ -1,15 +1,46 @@
-* {
-  font-family: Euclid, sans-serif;
+body {
+  position: relative;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .center {
-  display: block;
-  text-decoration: none;
+  max-width: 560px;
+  width: 100%;
+  aspect-ratio: 2.65/1;
+  position: relative;
+}
+
+.center__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+}
+
+.center__cnt {
+  position: relative;
+  z-index: 1;
+  padding: 12px 32px;
   text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 22px;
+}
+
+.divider {
+  max-width: 360px;
+  width: 100%;
+  aspect-ratio: 24/1;
+  object-fit: contain;
+  margin: 8px 0;
+}
+
+#app {
+  margin: auto;
 }
 
 #logo {
@@ -27,6 +58,7 @@
   transition-duration: 200ms;
   opacity: 0;
   visibility: hidden;
+  line-height: 1;
 }
 
 #response-text.active {
@@ -35,19 +67,26 @@
 }
 
 #response-button {
-  border: none;
+  border: 2px solid rgb(216, 181, 149);
   transition-duration: 200ms;
-  opacity: 0;
-  visibility: hidden;
-  background-color: white;
-  border: 1px solid #037dd6;
-  font-weight: bold;
-  color: #037dd6;
-  border-radius: 100px;
-  margin: 10px;
-  margin-top: 21px;
-  height: 45px;
-  width: 170px;
+  /* opacity: 0;
+  visibility: hidden; */
+  margin-bottom: 16px;
+  padding: 12px 64px;
+  background: linear-gradient(to bottom, rgb(0, 31, 44) 40%, rgb(0, 42, 58) 50%);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative;
+  cursor: pointer;
+}
+
+#response-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(216, 181, 149);
+  transition: transform 0.2s;
 }
 
 #response-button.active {
@@ -55,7 +94,12 @@
   visibility: visible;
 }
 
-#response-button:hover {
-  cursor: pointer;
-  box-shadow: lightgray 0px 0px 10px;
+#response-button:hover::before {
+  transform: scale(0.95);
+}
+
+#background-img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
 }

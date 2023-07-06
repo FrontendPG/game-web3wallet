@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   position: relative;
   margin: 0;
@@ -42,7 +48,7 @@ body {
   padding: 12px 32px;
   text-align: center;
   color: #fff;
-  font-size: 22px;
+  font-size: 26px;
 }
 
 .divider {
@@ -119,4 +125,4 @@ body {
 }
 
 
-/*# sourceMappingURL=/game-web3wallet/styles.51a5c2f6.css.map */
+/*# sourceMappingURL=/game-web3wallet/styles.0356b422.css.map */

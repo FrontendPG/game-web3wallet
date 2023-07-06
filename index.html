@@ -19,8 +19,23 @@
 
   <body>
     <img src="./page-bg.jpg" alt="" decoding="async" id="background-img" />
+
     <div id="app">
-      <div class="center">
+      <div id="get-metamask" class="center" hidden>
+        <img src="./block-bg.png" alt="" decoding="async" class="center__bg" />
+        <div class="center__cnt">
+          <img src="./metamask.svg" alt="metamask logo" width="120" height="120" />
+          <p>
+            To proceed, you need to install the Metamask wallet. Installation instructions for your
+            browser can be found <a href="https://metamask.io/" class="link">here</a> or read our
+            <a href="https://primegamesstudio.com/faq#what-do-i-need-to-start-play-and-trading-nfts" class="link"
+              >FAQ</a
+            >.
+          </p>
+        </div>
+      </div>
+
+      <div id="dialog" class="center" hidden>
         <img src="./block-bg.png" alt="" decoding="async" class="center__bg" />
         <div class="center__cnt">
           <p>

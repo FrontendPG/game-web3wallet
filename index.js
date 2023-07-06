@@ -8,11 +8,19 @@ let signer;
 document.addEventListener("DOMContentLoaded", loadApp());
 
 async function loadApp() {
-  provider = new ethers.providers.Web3Provider(window.ethereum, "any");
-  signer = provider.getSigner();
-  if (!signer) window.location.reload();
-  await provider.send("eth_requestAccounts", []);
-  processAction();
+  const getMetamaskEl = document.getElementById("get-metamask");
+  const dialogEl = document.getElementById("dialog");
+
+  if (window.ethereum) {
+    dialogEl.hidden = false;
+    provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+    signer = provider.getSigner();
+    if (!signer) window.location.reload();
+    await provider.send("eth_requestAccounts", []);
+    processAction();
+  } else {
+    getMetamaskEl.hidden = false;
+  }
 }
 
 function processAction() {
@@ -88,7 +96,11 @@ async function signMessage(message) {
 async function signTypedMessage(types, domain, message) {
   try {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    const signature = await signer._signTypedData(JSON.parse(domain), JSON.parse(types), JSON.parse(message))
+    const signature = await signer._signTypedData(
+      JSON.parse(domain),
+      JSON.parse(types),
+      JSON.parse(message)
+    );
     console.log({ signature });
     displayResponse("Signature complete.<br><br>Copy to clipboard then continue to App", signature);
   } catch (error) {

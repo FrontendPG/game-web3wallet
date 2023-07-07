@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", loadApp());
 async function loadApp() {
   const getMetamaskEl = document.getElementById("get-metamask");
   const dialogEl = document.getElementById("dialog");
+  const msgEl = document.getElementById('msg')
 
   if (window.ethereum) {
     dialogEl.hidden = false;
@@ -17,7 +18,7 @@ async function loadApp() {
     signer = provider.getSigner();
     if (!signer) window.location.reload();
     await provider.send("eth_requestAccounts", []);
-    processAction();
+    processAction().then(() => msgEl.textContent = 'Press "Yes" to continue.');
   } else {
     getMetamaskEl.hidden = false;
   }
